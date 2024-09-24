@@ -5,7 +5,8 @@
 * [Other docs](todo)
 
 
-### 2024.09.23 - 2hr: set up repo, itch.io, and trello
+### 2024.09.24 - 2hr: Set up repo, itch.io, trello, and this!
+* need to make new ssh key without passphrase :(
 
 examples============================
 
