@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bsv2gqa62puxn"]
 
-[ext_resource type="Texture2D" uid="uid://bh1xs6up0wd0y" path="res://assets/IMG_0549.png" id="1_0dkv6"]
+[ext_resource type="Texture2D" uid="uid://bh1xs6up0wd0y" path="res://assets/character.png" id="1_0dkv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcy2n"]
 atlas = ExtResource("1_0dkv6")
@@ -91,16 +91,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v01xc"]
-size = Vector2(9, 28)
+size = Vector2(11.5, 39)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_v04t3")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -24)
+position = Vector2(0.25, -20.5)
 shape = SubResource("RectangleShape2D_v01xc")
+
+[node name="WallChecker" type="RayCast2D" parent="."]
+position = Vector2(0.25, -20.5)
+rotation = -1.5708
+target_position = Vector2(0, 10)
