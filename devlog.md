@@ -4,6 +4,18 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.07 - 4hrs 30mins: Overhauled player physics code, finished wall jumping & sliding, started on bouncing mechanic
+* redid the player phsyics code w/ a state machine (different states being Air, Floor, and Wall)
+* ran into trouble with character "walking-off" wall before jump input, wouldn't let me stop horizontal movement while
+  on a wall. I tweaked it to be a little smoother- it's still finicky, but it works.
+* edited wall sliding mechanic so that the sliding speed gradually increases the longer you stay on the wall.
+* started on bounce mechanic for the umbrellas. I imported a basic umbrella sprite I made prior and made the code change the
+  players y velocity when entering the Area2D collision shape attached to the umbrella
+* would like to find a way to have bounce force depend on the height the player falls onto it, but for now it works as
+  intended
+* need to sort out tilemap & collision layers in order to start working on the powerline sliding mechanic.
+
+
 ### 2024.10.05 - 4hrs: Set up test tilemap & started on wall jumping & sliding
 * put together basic level with custom tileset I already had made prior
 * found tutorial: and https://www.youtube.com/watch?v=2PiMrxGP2_o which will help me with the wall jump mechanic

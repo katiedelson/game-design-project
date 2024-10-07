@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsv2gqa62puxn"]
+[gd_scene load_steps=15 format=3 uid="uid://bsv2gqa62puxn"]
 
 [ext_resource type="Texture2D" uid="uid://bh1xs6up0wd0y" path="res://assets/character.png" id="1_0dkv6"]
 
@@ -41,6 +41,10 @@ region = Rect2(192, 0, 32, 42)
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2r4c"]
 atlas = ExtResource("1_0dkv6")
 region = Rect2(224, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss0ea"]
+atlas = ExtResource("1_0dkv6")
+region = Rect2(192, 0, 32, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v04t3"]
 animations = [{
@@ -88,6 +92,14 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss0ea")
+}],
+"loop": true,
+"name": &"wall",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v01xc"]
@@ -98,7 +110,7 @@ size = Vector2(11.5, 39)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_v04t3")
-animation = &"idle"
+animation = &"wall"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
