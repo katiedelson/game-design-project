@@ -81,7 +81,8 @@ func wall_state(delta, direction):
 	if is_on_floor(): state = FLOOR
 	elif not is_near_wall(): state = AIR
 	#add wall sliding animation later
-	animated_sprite.play("wall")
+	animated_sprite.play("wall_slide")
+	
 	
 
 	if direction != last_jump_direction and Input.is_action_pressed("jump") and Input.is_action_pressed("move_left"):

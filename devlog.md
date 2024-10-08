@@ -4,7 +4,7 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
-### 2024.10.07 - 4hrs 30mins: Overhauled player physics code, finished wall jumping & sliding, started on bouncing mechanic
+### 2024.10.07 - 5hrs: Overhauled player physics code, finished wall jumping & sliding, started on bouncing mechanic
 * redid the player phsyics code w/ a state machine (different states being Air, Floor, and Wall)
 * ran into trouble with character "walking-off" wall before jump input, wouldn't let me stop horizontal movement while
   on a wall. I tweaked it to be a little smoother- it's still finicky, but it works.
@@ -14,6 +14,7 @@
 * would like to find a way to have bounce force depend on the height the player falls onto it, but for now it works as
   intended
 * need to sort out tilemap & collision layers in order to start working on the powerline sliding mechanic.
+* later added idle and wall jump sprites
 
 
 ### 2024.10.05 - 4hrs: Set up test tilemap & started on wall jumping & sliding
