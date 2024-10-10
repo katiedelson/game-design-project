@@ -4,6 +4,14 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.09 - 5hrs: Updated wall jumping & sliding and improved umbrellas
+* found out a way to lock horizontal movement when in wall state
+* made it so you can only hold onto the wall for a few seconds before you start sliding down the wall
+* added wall grab sprite
+* made it so you can press the "f" key to slide on command
+* made the amount you bouce relative to the height you fall at, with the condition that the player has to be falling
+  to activate the bounce, so you cannot jump on it from the bottom
+
 ### 2024.10.07 - 5hrs: Overhauled player physics code, finished wall jumping & sliding, started on bouncing mechanic
 * redid the player phsyics code w/ a state machine (different states being Air, Floor, and Wall)
 * ran into trouble with character "walking-off" wall before jump input, wouldn't let me stop horizontal movement while
@@ -15,7 +23,6 @@
   intended
 * need to sort out tilemap & collision layers in order to start working on the powerline sliding mechanic.
 * later added idle and wall jump sprites
-
 
 ### 2024.10.05 - 4hrs: Set up test tilemap & started on wall jumping & sliding
 * put together basic level with custom tileset I already had made prior

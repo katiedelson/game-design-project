@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/umbrella.gd" id="1_u3ttv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbltb"]
-size = Vector2(46, 8)
+size = Vector2(28, 3)
 
 [node name="umbrella" type="AnimatableBody2D"]
 collision_layer = 9
@@ -18,7 +18,7 @@ texture = ExtResource("1_fl4yc")
 position = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -16)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_vbltb")
 one_way_collision = true
 
