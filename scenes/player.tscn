@@ -212,7 +212,12 @@ frame_progress = 0.287549
 position = Vector2(0, -21)
 shape = SubResource("RectangleShape2D_v01xc")
 
-[node name="WallChecker" type="RayCast2D" parent="."]
+[node name="WallCheckerLEFT" type="RayCast2D" parent="."]
 position = Vector2(0.25, -20.5)
 rotation = -1.5708
+target_position = Vector2(0, 10)
+
+[node name="WallCheckerRIGHT" type="RayCast2D" parent="."]
+position = Vector2(0.25, -20.75)
+rotation = 1.5708
 target_position = Vector2(0, 10)

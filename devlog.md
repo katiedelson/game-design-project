@@ -4,9 +4,15 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.12 - 1hr: Fixed previous issues with wall jump & sliding
+* added a slide state so that sliding after timer and sliding on command didn't interfere
+* deleted the last_jump_direction var and added another Raycast2d and changed is_near_wall() function to
+  have is_near_left_wall() and is_near_right_wall(). Used these to prevent wall scaling and issue with previous
+  method where falling on same wall after wall jumping doesn't allow another jump in the same direction
+
 ### 2024.10.09 - 5hrs: Updated wall jumping & sliding and improved umbrellas
 * found out a way to lock horizontal movement when in wall state
-* made it so you can only hold onto the wall for a few seconds before you start sliding down the wall
+* made it so you hold onto the wall for a few seconds before you start sliding down the wall
 * added wall grab sprite
 * made it so you can press the "f" key to slide on command
 * made the amount you bouce relative to the height you fall at, with the condition that the player has to be falling
