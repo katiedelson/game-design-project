@@ -4,6 +4,25 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.15 - 5hrs: More power line tests & updated wall jump
+* tested sliding on powerlines, didn't find any tutorials so I tried using chat gpt. Achieved sliding, but
+  movement was buggy. Removed and will restart in the future.
+* tested a physics bridge with RigidBody2D's and PinJoint2D's. Was cool, but it was too glitchy (may revisit later)
+* made it so you can jump with W, and now S to slide down
+* added double jump
+* found issue where double jump wouldn't reset on umbrella's (doesn't have a collider), so I called a function I made
+  called "reset_double_jump" in the umbrella's script
+* removed directional input from wall jump to make it smoother & faster.
+* needed new method to prevent wall scaling, so I added a var to keep track of the last wall side jumped
+  on (left vs right) and a "can_attach_to_wall()" function. Then I added new conditions to the jumps to only allow
+  the player to latch onto the wall if they're coming from the opposite wall
+* found issue where the player enters the wall state on an "invisible wall" parallel to the wall the player's
+  back is up against, still need to fix
+
+### 2024.10.14 - 2hrs: Started on power lines & other updates
+* created power line platform scene & added it to my level
+* made it a one way collider, and added script to allow S key to drop down from it
+
 ### 2024.10.12 - 1hr: Fixed previous issues with wall jump & sliding
 * added a slide state so that sliding after timer and sliding on command didn't interfere
 * deleted the last_jump_direction var and added another Raycast2d and changed is_near_wall() function to

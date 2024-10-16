@@ -196,8 +196,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v01xc"]
-size = Vector2(14, 39)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ew8fg"]
+radius = 7.0
+height = 38.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
@@ -206,18 +207,17 @@ position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_v04t3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.287549
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21)
-shape = SubResource("RectangleShape2D_v01xc")
+position = Vector2(0, -20)
+shape = SubResource("CapsuleShape2D_ew8fg")
 
 [node name="WallCheckerLEFT" type="RayCast2D" parent="."]
-position = Vector2(0.25, -20.5)
+position = Vector2(0, -30.75)
 rotation = -1.5708
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 8)
 
 [node name="WallCheckerRIGHT" type="RayCast2D" parent="."]
-position = Vector2(0.25, -20.75)
+position = Vector2(0, -31)
 rotation = 1.5708
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 8)

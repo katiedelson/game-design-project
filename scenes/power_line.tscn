@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgbtj6soh1767"]
+
+[ext_resource type="Script" path="res://scripts/power_line.gd" id="1_y0joj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vg6vg"]
+a = Vector2(-66, -6)
+b = Vector2(59, -6)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_syc2d"]
+a = Vector2(12, -4)
+b = Vector2(-14, -5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_geal1"]
+a = Vector2(-12, -4)
+b = Vector2(17, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70b3s"]
+size = Vector2(184, 12)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_y0joj")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-2, -6)
+points = PackedVector2Array(90, -1, 70.9637, -0.524094, 50, 0, 25.8184, 0, -2.53493, 0, -32.7784, 0, -60, 0, -76.2667, -0.542225, -90, -1)
+width = 2.0
+default_color = Color(0.253843, 0.253843, 0.253843, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_vg6vg")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-78, -2)
+shape = SubResource("SegmentShape2D_syc2d")
+one_way_collision = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(71, -2)
+shape = SubResource("SegmentShape2D_geal1")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_70b3s")
+one_way_collision = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
