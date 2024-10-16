@@ -140,3 +140,5 @@ func can_attach_to_wall() -> bool:
 
 func reset_double_jump():
 	jump_count = 0
+func reset_last_wall():
+	last_wall = ""

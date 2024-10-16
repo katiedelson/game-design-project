@@ -18,6 +18,8 @@
   the player to latch onto the wall if they're coming from the opposite wall
 * found issue where the player enters the wall state on an "invisible wall" parallel to the wall the player's
   back is up against, still need to fix
+* found issue where last wall jumped wouldn't reset on umbrellas (no colliders) so called "reset_last_wall" in umbrella's
+  script
 
 ### 2024.10.14 - 2hrs: Started on power lines & other updates
 * created power line platform scene & added it to my level
