@@ -4,6 +4,46 @@
 
 [sub_resource type="GDScript" id="GDScript_kom1a"]
 script/source = "extends Node2D
+
+#@onready var c1: CollisionShape2D = $RigidBody2D/CollisionShape2D
+#@onready var c2: CollisionShape2D = $RigidBody2D2/CollisionShape2D
+#@onready var c3: CollisionShape2D = $RigidBody2D3/CollisionShape2D
+#@onready var c4: CollisionShape2D = $RigidBody2D4/CollisionShape2D
+#@onready var c5: CollisionShape2D = $RigidBody2D5/CollisionShape2D
+#@onready var c6: CollisionShape2D = $RigidBody2D6/CollisionShape2D
+#@onready var c7: CollisionShape2D = $RigidBody2D7/CollisionShape2D
+#@onready var c8: CollisionShape2D = $RigidBody2D8/CollisionShape2D
+#@onready var c9: CollisionShape2D = $RigidBody2D9/CollisionShape2D
+#
+#
+#func _physics_process(delta: float) -> void:
+	#_enable_collisions()
+	## Continuously check if the 'crouch' action (e.g., 's' key) is being held
+	#if Input.is_action_pressed(\"crouch\"):
+		#_disable_collisions()
+## Helper function to disable all collisions
+#func _disable_collisions() -> void:
+	#c1.set_deferred(\"disabled\", true)
+	#c2.set_deferred(\"disabled\", true)
+	#c3.set_deferred(\"disabled\", true)
+	#c4.set_deferred(\"disabled\", true)
+	#c5.set_deferred(\"disabled\", true)
+	#c6.set_deferred(\"disabled\", true)
+	#c7.set_deferred(\"disabled\", true)
+	#c8.set_deferred(\"disabled\", true)
+	#c9.set_deferred(\"disabled\", true)
+#
+## Helper function to enable all collisions
+#func _enable_collisions() -> void:
+	#c1.set_deferred(\"disabled\", false)
+	#c2.set_deferred(\"disabled\", false)
+	#c3.set_deferred(\"disabled\", false)
+	#c4.set_deferred(\"disabled\", false)
+	#c5.set_deferred(\"disabled\", false)
+	#c6.set_deferred(\"disabled\", false)
+	#c7.set_deferred(\"disabled\", false)
+	#c8.set_deferred(\"disabled\", false)
+	#c9.set_deferred(\"disabled\", false)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ud810"]

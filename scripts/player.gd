@@ -74,6 +74,8 @@ func floor_state():
 		state = AIR
 	elif can_attach_to_wall() and velocity.y > 0:
 		state = WALL  # Attach to the wall
+	elif not is_on_floor():
+		state = AIR
 
 func grab_state(delta):
 	velocity.x = 0

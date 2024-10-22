@@ -4,6 +4,12 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.22 - 1hr: Updated level & added text instructions & clarification
+* changed level & preventing falling off
+* added text instructions to help guide playtesting
+* player was "walking" in air when falling (not prompted by jump) so added new if statement in player script
+* added physics bridge to test level, need player input (pretty glitchy)
+
 ### 2024.10.15 - 5hrs: More power line tests & updated wall jump
 * tested sliding on powerlines, didn't find any tutorials so I tried using chat gpt. Achieved sliding, but
   movement was buggy. Removed and will restart in the future.
@@ -20,6 +26,7 @@
   back is up against, still need to fix
 * found issue where last wall jumped wouldn't reset on umbrellas (no colliders) so called "reset_last_wall" in umbrella's
   script
+* prevented character from grabbing onto invisibile wall on ledge by raising RayCast2D on character
 
 ### 2024.10.14 - 2hrs: Started on power lines & other updates
 * created power line platform scene & added it to my level
