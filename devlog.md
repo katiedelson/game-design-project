@@ -4,6 +4,10 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.25 - 4 hrs: Updated sprite & tileset
+* gave the player clothes
+* added color to map
+
 ### 2024.10.22 - 1hr: Updated level & added text instructions & clarification
 * changed level & preventing falling off
 * added text instructions to help guide playtesting

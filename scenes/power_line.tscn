@@ -24,7 +24,7 @@ script = ExtResource("1_y0joj")
 position = Vector2(-2, -6)
 points = PackedVector2Array(90, -1, 70.9637, -0.524094, 50, 0, 25.8184, 0, -2.53493, 0, -32.7784, 0, -60, 0, -76.2667, -0.542225, -90, -1)
 width = 2.0
-default_color = Color(0.253843, 0.253843, 0.253843, 1)
+default_color = Color(0.275212, 0.191696, 0.162949, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_vg6vg")

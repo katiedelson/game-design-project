@@ -58,7 +58,7 @@ freeze = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(10, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("1_blxsd")
@@ -76,7 +76,7 @@ node_b = NodePath("../../anchor")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(30, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
 texture = ExtResource("1_blxsd")
@@ -94,7 +94,7 @@ node_b = NodePath("../../RigidBody2D")
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 position = Vector2(50, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
 texture = ExtResource("1_blxsd")
@@ -112,7 +112,7 @@ node_b = NodePath("../../RigidBody2D2")
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
 position = Vector2(70, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
 texture = ExtResource("1_blxsd")
@@ -130,7 +130,7 @@ node_b = NodePath("../../RigidBody2D3")
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
 position = Vector2(90, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D5"]
 texture = ExtResource("1_blxsd")
@@ -148,7 +148,7 @@ node_b = NodePath("../../RigidBody2D4")
 
 [node name="RigidBody2D6" type="RigidBody2D" parent="."]
 position = Vector2(110, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D6"]
 texture = ExtResource("1_blxsd")
@@ -166,7 +166,7 @@ node_b = NodePath("../../RigidBody2D5")
 
 [node name="RigidBody2D7" type="RigidBody2D" parent="."]
 position = Vector2(130, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D7"]
 texture = ExtResource("1_blxsd")
@@ -184,7 +184,7 @@ node_b = NodePath("../../RigidBody2D6")
 
 [node name="RigidBody2D8" type="RigidBody2D" parent="."]
 position = Vector2(150, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D8"]
 texture = ExtResource("1_blxsd")
@@ -202,7 +202,7 @@ node_b = NodePath("../../RigidBody2D7")
 
 [node name="RigidBody2D9" type="RigidBody2D" parent="."]
 position = Vector2(170, 1)
-mass = 0.4
+mass = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D9"]
 texture = ExtResource("1_blxsd")
