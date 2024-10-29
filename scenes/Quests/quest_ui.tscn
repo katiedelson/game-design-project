@@ -1,0 +1,148 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd6cun62v8fxs"]
+
+[ext_resource type="Script" path="res://scripts/Quests/quest_ui.gd" id="1_ne36w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqkm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_176f8"]
+bg_color = Color(0.751285, 0.586141, 0.340298, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 10
+border_width_bottom = 20
+border_color = Color(0.642364, 0.500216, 0.28801, 1)
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp5ya"]
+bg_color = Color(0.64, 0.50176, 0.2944, 1)
+border_width_left = 10
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.57, 0.44004, 0.2451, 1)
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[node name="QuestUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne36w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 50.0
+offset_right = -150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yqkm5")
+
+[node name="Backgrounds" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG_1" type="Panel" parent="CanvasLayer/Panel/Backgrounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_176f8")
+
+[node name="BG_2" type="Panel" parent="CanvasLayer/Panel/Backgrounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp5ya")
+
+[node name="Contents" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Headings" type="HBoxContainer" parent="CanvasLayer/Panel/Contents"]
+layout_mode = 2
+
+[node name="List" type="Label" parent="CanvasLayer/Panel/Contents/Headings"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "to-do today:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Details" type="Label" parent="CanvasLayer/Panel/Contents/Headings"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "delivery details"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Details" type="HBoxContainer" parent="CanvasLayer/Panel/Contents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="QuestList" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="QuestDetails" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="QuestTitle" type="Label" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "title"
+horizontal_alignment = 1
+
+[node name="QuestDesc" type="Label" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "description..."
+
+[node name="QuestObjectives" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+layout_mode = 2
+
+[node name="QuestRewards" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 21.0
+offset_right = -20.0
+offset_bottom = 57.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "X"

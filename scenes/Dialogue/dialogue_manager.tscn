@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://4rcteyg1lbej"]
+
+[ext_resource type="Script" path="res://scripts/Dialogue/dialogue_manager.gd" id="1_xvrrr"]
+[ext_resource type="PackedScene" uid="uid://lyli6ncfnubg" path="res://scenes/Dialogue/DialogueUI.tscn" id="2_uw2i6"]
+
+[node name="DialogueManager" type="Node2D"]
+script = ExtResource("1_xvrrr")
+
+[node name="DialogueUI" parent="." instance=ExtResource("2_uw2i6")]
+offset_left = 378.0
+offset_top = 169.0
+offset_right = 378.0
+offset_bottom = 169.0

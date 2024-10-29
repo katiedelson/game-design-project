@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://ysk4lttamc3x"]
+
+[ext_resource type="Texture2D" uid="uid://brrv37wu2xo8i" path="res://assets/Untitled_Artwork 7.png" id="1_73ynu"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_efsk5"]
+[ext_resource type="Script" path="res://resources/dialogue/dialogue.gd" id="2_7rpew"]
+[ext_resource type="PackedScene" uid="uid://4rcteyg1lbej" path="res://scenes/Dialogue/dialogue_manager.tscn" id="4_ikbet"]
+
+[sub_resource type="Resource" id="Resource_g6d6b"]
+script = ExtResource("2_7rpew")
+dialogues = {}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_280mm"]
+atlas = ExtResource("1_73ynu")
+region = Rect2(0, 42, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyvk3"]
+atlas = ExtResource("1_73ynu")
+region = Rect2(32, 42, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bld75"]
+atlas = ExtResource("1_73ynu")
+region = Rect2(64, 42, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8leme"]
+atlas = ExtResource("1_73ynu")
+region = Rect2(96, 42, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqgr0"]
+atlas = ExtResource("1_73ynu")
+region = Rect2(128, 42, 32, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rosyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_280mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyvk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bld75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8leme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqgr0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovamj"]
+radius = 6.0
+height = 36.0
+
+[node name="NPC" type="CharacterBody2D" groups=["NPC"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_efsk5")
+npc_id = "npc_1"
+npc_name = "pete"
+dialogue_resource = SubResource("Resource_g6d6b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_rosyj")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -2.0
+offset_top = -61.0
+offset_right = 3.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.980392, 0.792157, 0.27451, 1)
+text = "!"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_ovamj")
+
+[node name="DialogueManager" parent="." instance=ExtResource("4_ikbet")]

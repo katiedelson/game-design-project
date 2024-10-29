@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://bsv2gqa62puxn"]
+[gd_scene load_steps=27 format=3 uid="uid://bsv2gqa62puxn"]
 
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_if475"]
 [ext_resource type="Texture2D" uid="uid://bgu7ual7b62fa" path="res://assets/clothed v2.png" id="1_yu4t4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d0u4"]
@@ -199,13 +200,13 @@ radius = 6.0
 height = 36.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_if475")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_v04t3")
-animation = &"climb"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.744632
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)
@@ -220,3 +221,11 @@ target_position = Vector2(0, 8)
 position = Vector2(0, -31)
 rotation = 1.5708
 target_position = Vector2(0, 8)
+
+[node name="InteractChecker" type="RayCast2D" parent="."]
+position = Vector2(0, -20)
+rotation = -1.5708
+target_position = Vector2(0, 60)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true

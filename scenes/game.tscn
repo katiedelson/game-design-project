@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://v2xbvx7vr1rr"]
+[gd_scene load_steps=14 format=4 uid="uid://v2xbvx7vr1rr"]
 
 [ext_resource type="PackedScene" uid="uid://bsv2gqa62puxn" path="res://scenes/player.tscn" id="1_l11an"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_24qvq"]
 [ext_resource type="Texture2D" uid="uid://ba7ood2ndmtea" path="res://assets/Untitled_Artwork 11.png" id="3_vac6b"]
 [ext_resource type="PackedScene" uid="uid://c236tkg67mvri" path="res://scenes/umbrella.tscn" id="4_d8qgt"]
 [ext_resource type="PackedScene" uid="uid://b6lq5c4hs8sj4" path="res://scenes/physics_bridge.tscn" id="4_qn7r4"]
 [ext_resource type="PackedScene" uid="uid://dgbtj6soh1767" path="res://scenes/power_line.tscn" id="5_6txhu"]
+[ext_resource type="Script" path="res://resources/dialogue/dialogue.gd" id="8_2w856"]
 [ext_resource type="Texture2D" uid="uid://npqcvf1e0fdf" path="res://assets/Untitled_Artwork 8.png" id="8_a0ni6"]
+[ext_resource type="PackedScene" uid="uid://ysk4lttamc3x" path="res://scenes/npc.tscn" id="8_o6tlb"]
+[ext_resource type="PackedScene" uid="uid://b08l4q4p6idmf" path="res://scenes/QuestItem.tscn" id="8_tn3qu"]
+[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="9_ibqqw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qouix"]
 texture = ExtResource("3_vac6b")
@@ -110,12 +113,15 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_qouix")
 
+[sub_resource type="Resource" id="Resource_e4d2g"]
+script = ExtResource("8_2w856")
+dialogues = {}
+
 [node name="Game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_l11an")]
 z_index = 1
 position = Vector2(-32, -37)
-script = ExtResource("2_24qvq")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -36)
@@ -235,3 +241,13 @@ texture = ExtResource("8_a0ni6")
 
 [node name="physicsBridge" parent="." instance=ExtResource("4_qn7r4")]
 position = Vector2(410, -319)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="NPC" parent="NPCs" instance=ExtResource("8_o6tlb")]
+position = Vector2(148, -19)
+dialogue_resource = SubResource("Resource_e4d2g")
+
+[node name="QuestItem" parent="." instance=ExtResource("8_tn3qu")]
+position = Vector2(-110, -43)
+item_icon = ExtResource("9_ibqqw")

@@ -1,0 +1,68 @@
+{
+	"npc_1": {
+		"tree": [
+			{
+				"branch_id": "npc_1_1",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "You need something?",
+						"options": {
+							"what are you doing?": "in_progress",
+							"nevermind": "exit",
+						}
+					},
+					{
+						"state": "in_progress",
+						"text": "Wouldn't you like to know...",
+						"options": {
+							"recieve quests": "give_quest",
+							"nevermind": "exit",
+						}
+					},
+					{
+						"state": "give_quest",
+						"text": "Go grab that umbrella over there. Don't ask why.",
+						"options": {
+							"okay?": "exit",
+						}
+					},
+					{
+						"state": "end",
+						"text": "At least you're good for something...",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "now leave me alone",
+						"options": {}
+					}
+				]
+			},
+			{
+				"branch_id": "npc_1_2",
+				"dialogues": []
+			},
+			{
+				"branch_id": "npc_1_default",
+				"dialogues": []
+			},
+		],
+	},
+	"npc_2": {
+		"tree": [
+			{
+				"branch_id": "npc_2_1",
+				"dialogues": []
+			},
+			{
+				"branch_id": "npc_2_2",
+				"dialogues": []
+			},
+			{
+				"branch_id": "npc_2_default",
+				"dialogues": []
+			},
+		],
+	},
+}

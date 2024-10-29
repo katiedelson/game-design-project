@@ -4,6 +4,7 @@ enum {AIR, FLOOR, WALL, SLIDE}
 var state = AIR
 var wall_time = 0.0
 var sliding_speed = 100
+var can_move = true
 
 const JUMP_VELOCITY = -300.0
 const SLIDE_TIME = 3.0
@@ -13,34 +14,44 @@ const MAX_SLIDING_SPEED = 15000
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_checker_left: RayCast2D = $WallCheckerLEFT
 @onready var wall_checker_right: RayCast2D = $WallCheckerRIGHT
+@onready var interact_checker: RayCast2D = $InteractChecker
 
 var jump_count = 0
 var last_wall = ""  # Tracks the last wall the player attached to
 
+func _ready():
+	Global.player = self
 func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction != 0:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if can_move:
+		if direction != 0:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if state != WALL and state != SLIDE:
+		if state != WALL and state != SLIDE:
+			if direction < 0: 
+				animated_sprite.flip_h = true
+			elif direction > 0: 
+				animated_sprite.flip_h = false
+	
+		#flip interaction checker
 		if direction < 0: 
-			animated_sprite.flip_h = true
+			interact_checker.rotation_degrees = 90
 		elif direction > 0: 
-			animated_sprite.flip_h = false
+			interact_checker.rotation_degrees = -90
 
-	# Process the player's state
-	match state:
-		AIR: air_state()
-		FLOOR: floor_state()
-		WALL: grab_state(delta)
-		SLIDE: slide_state(delta)
+		# Process the player's state
+		match state:
+			AIR: air_state()
+			FLOOR: floor_state()
+			WALL: grab_state(delta)
+			SLIDE: slide_state(delta)
 
-	move_and_slide()
+		move_and_slide()
 
 func air_state():
 	wall_time = 0
@@ -131,12 +142,15 @@ func is_near_left_wall() -> bool:
 
 func is_near_right_wall() -> bool:
 	return wall_checker_right.is_colliding()
+#
+#func is_near_interation() -> bool:
+	#return interact_checker.is_colliding()
 
 func can_attach_to_wall() -> bool:
 	# Only allow attaching if the player is not on the same wall side
-	if is_near_left_wall() and last_wall != "left":
+	if is_near_left_wall() and last_wall != "left" and animated_sprite.flip_h == false:
 		return true
-	if is_near_right_wall() and last_wall != "right":
+	if is_near_right_wall() and last_wall != "right" and animated_sprite.flip_h == true:
 		return true
 	return false
 
@@ -144,3 +158,18 @@ func reset_double_jump():
 	jump_count = 0
 func reset_last_wall():
 	last_wall = ""
+
+func _input(event):
+	if can_move:
+		if event.is_action_pressed("interact"):
+			var target = interact_checker.get_collider()
+			if target != null:
+				if target.is_in_group("NPC"):
+					print("I'm talking to an NPC!")
+					can_move = false
+					target.start_dialogue()
+				if target.is_in_group("items"):
+					print("I'm interacting with an item!")
+					#to-do: check if item is needed
+					#to-do: remove item
+					target.start_interact()

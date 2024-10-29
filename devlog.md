@@ -4,6 +4,17 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.10.29 - 3 hrs: Continued with tutorial (during class)
+* added dialogue json file for little state machine branch system
+* finished dialpogue system with temporary UI design
+* need to add actual quests/"deliveries"
+* need to incoperate questUI
+
+### 2024.10.29 - 1 hr: Started with quest & dialogue system
+* found tutorial: https://www.youtube.com/watch?v=mPZZ9MDzgjk
+* added NPC and quest items
+* fixed bug where you attach to wall while facing the other direction ("invisible wall thing")
+
 ### 2024.10.25 - 4 hrs: Updated sprite & tileset
 * gave the player clothes
 * added color to map
