@@ -8,12 +8,11 @@ extends Area2D
 @export var item_icon = Texture2D
 
 func _ready():
+	# show texture in game
 	if not Engine.is_editor_hint():
 		sprite_2d.texture = item_icon
 	
 func _process(delta):
+	# show texture in engine
 	if Engine.is_editor_hint():
 		sprite_2d.texture = item_icon
-
-func start_interact():
-	print("i am an item")

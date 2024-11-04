@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd7njqfpa76cg"]
+
+[ext_resource type="Script" path="res://scenes/quest_item.gd" id="1_vjmgr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buvl7"]
+
+[node name="QuestItem" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vjmgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_buvl7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

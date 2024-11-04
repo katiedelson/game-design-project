@@ -1,26 +1,46 @@
 extends CharacterBody2D
 
+# scene-tree node references
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var wall_checker_left: RayCast2D = $WallCheckerLEFT
+@onready var wall_checker_right: RayCast2D = $WallCheckerRIGHT
+@onready var interact_checker: RayCast2D = $InteractChecker
+@onready var amount: Label = $HUD/Points/Amount
+@onready var quest_tracker: ColorRect = $HUD/QuestTracker
+@onready var title: Label = $HUD/QuestTracker/Details/Title
+@onready var objectives: VBoxContainer = $HUD/QuestTracker/Details/Objectives
+
+@onready var quest_manager: Node2D = $QuestManager
+
+# states
 enum {AIR, FLOOR, WALL, SLIDE}
+
+# variables
 var state = AIR
 var wall_time = 0.0
 var sliding_speed = 100
 var can_move = true
+var jump_count = 0
+var last_wall = ""  # tracks the last wall the player attached to
 
 const JUMP_VELOCITY = -300.0
 const SLIDE_TIME = 3.0
 const SPEED = 180
 const MAX_SLIDING_SPEED = 15000
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var wall_checker_left: RayCast2D = $WallCheckerLEFT
-@onready var wall_checker_right: RayCast2D = $WallCheckerRIGHT
-@onready var interact_checker: RayCast2D = $InteractChecker
-
-var jump_count = 0
-var last_wall = ""  # Tracks the last wall the player attached to
+# dialogue & quest vars
+var selected_quest: Quest = null
+var point_amount = 0
 
 func _ready():
 	Global.player = self
+	quest_tracker.visible = false
+	update_points()
+	
+	# signal connection
+	quest_manager.quest_updated.connect(_on_quest_updated)
+	quest_manager.objective_updated.connect(_on_objective_updated)
+	
 func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -168,8 +188,92 @@ func _input(event):
 					print("I'm talking to an NPC!")
 					can_move = false
 					target.start_dialogue()
-				if target.is_in_group("items"):
+					check_quest_objectives(target.npc_id, "talk_to")
+				if target.is_in_group("Item"):
 					print("I'm interacting with an item!")
-					#to-do: check if item is needed
-					#to-do: remove item
-					target.start_interact()
+					if is_item_needed(target.item_id):
+						check_quest_objectives(target.item_id, "collection", target.item_quantity)
+						target.queue_free()
+					else:
+						print("item not needed for any active quest")
+	# open/close quest log
+		if event.is_action_pressed("ui_quest_menu"):
+			quest_manager.show_hide_log()
+
+# check if quest item is needed
+func is_item_needed(item_id: String) -> bool:
+	if selected_quest != null:
+		for objective in selected_quest.objectives:
+			if objective.target_id == item_id and objectives.target_type == "collection" and not objective.is_completed:
+				return true
+	return false
+
+func check_quest_objectives(target_id: String, target_type: String, quantity: int = 1):
+	if selected_quest == null:
+		return
+	
+	#update objectives
+	var objective_updated = false
+	for objective in selected_quest.objectives:
+		if objective.target_id == target_id and objectives.target_type == target_type and not objective.is_completed:
+			print("completing objective for quest: ", selected_quest.quest_name)
+			selected_quest.complete_objective(objective.id, quantity)
+			objective_updated = true
+			break
+	
+	# provide rewards
+	if objective_updated:
+		if selected_quest.is_completed():
+			handle_quest_completion(selected_quest)
+			
+		# update UI
+		update_quest_tracker(selected_quest)
+
+# point rewards
+func handle_quest_completion(quest: Quest):
+	for reward in quest.rewards:
+		if reward.reward_type == "points":
+			point_amount += reward.reward_amount
+			update_points()
+	update_quest_tracker(quest)
+	quest_manager.update_quest(quest.quest_id, "completed")
+
+
+# update point UI
+func update_points():
+	amount.text = str(point_amount)
+
+# update tracker UI
+func update_quest_tracker(quest: Quest):
+	# if we have an active quest, populate tracker
+	if quest:
+		quest_tracker.visible = true
+		title.text = quest.quest_name
+		
+		for child in objectives.get_children():
+			objectives.remove_child(child)
+		
+		for objective in quest.objectives:
+			var label = Label.new()
+			label.text = objective.description
+			
+			if objective.is_completed:
+				label.add_theme_color_override("font_color", Color(0, 1, 0))
+			else:
+				label.add_theme_color_override("font_color", Color(1, 0, 0))
+			
+			objectives.add_child(label)
+	# no active quest, hide tracker
+	else:
+		quest_tracker.visible = false
+
+# update tracker if quest is complete
+func _on_quest_updated(quest_id: String):
+	var quest = quest_manager.get_quest(quest_id)
+	if quest == selected_quest:
+		update_quest_tracker(quest)
+
+# update tracker if objective is complete
+func _on_objective_updated(quest_id: String, objective_id: String):
+	if selected_quest and selected_quest.quest_id == quest_id:
+		update_quest_tracker(selected_quest)

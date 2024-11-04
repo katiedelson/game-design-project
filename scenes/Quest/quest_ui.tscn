@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cd6cun62v8fxs"]
 
-[ext_resource type="Script" path="res://scripts/Quests/quest_ui.gd" id="1_ne36w"]
+[ext_resource type="Script" path="res://scripts/Quest/quest_ui.gd" id="1_f8tuy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqkm5"]
 
@@ -33,7 +33,7 @@ offset_left = -2.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ne36w")
+script = ExtResource("1_f8tuy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -146,3 +146,5 @@ offset_bottom = 57.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "X"
+
+[connection signal="pressed" from="CanvasLayer/Panel/CloseButton" to="." method="_on_close_button_pressed"]

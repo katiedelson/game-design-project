@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://v2xbvx7vr1rr"]
+[gd_scene load_steps=16 format=4 uid="uid://v2xbvx7vr1rr"]
 
 [ext_resource type="PackedScene" uid="uid://bsv2gqa62puxn" path="res://scenes/player.tscn" id="1_l11an"]
+[ext_resource type="Script" path="res://scripts/daynightcycle.gd" id="2_ev2cs"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://assets/daynightcycle-gradient-texture.tres" id="3_4ukql"]
 [ext_resource type="Texture2D" uid="uid://ba7ood2ndmtea" path="res://assets/Untitled_Artwork 11.png" id="3_vac6b"]
 [ext_resource type="PackedScene" uid="uid://c236tkg67mvri" path="res://scenes/umbrella.tscn" id="4_d8qgt"]
 [ext_resource type="PackedScene" uid="uid://b6lq5c4hs8sj4" path="res://scenes/physics_bridge.tscn" id="4_qn7r4"]
@@ -8,8 +10,8 @@
 [ext_resource type="Script" path="res://resources/dialogue/dialogue.gd" id="8_2w856"]
 [ext_resource type="Texture2D" uid="uid://npqcvf1e0fdf" path="res://assets/Untitled_Artwork 8.png" id="8_a0ni6"]
 [ext_resource type="PackedScene" uid="uid://ysk4lttamc3x" path="res://scenes/npc.tscn" id="8_o6tlb"]
-[ext_resource type="PackedScene" uid="uid://b08l4q4p6idmf" path="res://scenes/QuestItem.tscn" id="8_tn3qu"]
-[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="9_ibqqw"]
+[ext_resource type="PackedScene" uid="uid://dd7njqfpa76cg" path="res://scenes/quest_item.tscn" id="9_ko1cn"]
+[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="10_docn6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qouix"]
 texture = ExtResource("3_vac6b")
@@ -128,11 +130,21 @@ position = Vector2(0, -36)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.282943, 0.31566, 0.599086, 1)
+script = ExtResource("2_ev2cs")
+gradient = ExtResource("3_4ukql")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_p4c0h")
 format = 2
 
 [node name="back" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_set = SubResource("TileSet_p4c0h")
+
+[node name="mid3" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD6//z/AQAHAAQAAAD6//3/AQAHAAUAAAD6//7/AQAHAAYAAAD7//z/AQAIAAQAAAD7//3/AQAIAAUAAAD7//7/AQAIAAYAAAD8//z/AQAHAAQAAAD8//3/AQAHAAUAAAD8//7/AQAHAAYAAAD9//z/AQAIAAQAAAD9//3/AQAIAAUAAAD9//7/AQAIAAYAAAD+//z/AQAHAAQAAAD+//3/AQAHAAUAAAD+//7/AQAHAAYAAAD///z/AQAIAAQAAAD///3/AQAIAAUAAAD///7/AQAIAAYAAAAAAPz/AQAHAAQAAAAAAP3/AQAHAAUAAAAAAP7/AQAHAAYAAAABAPz/AQAIAAQAAAABAP3/AQAIAAUAAAABAP7/AQAIAAYAAAACAPz/AQAHAAQAAAACAP3/AQAHAAUAAAACAP7/AQAHAAYAAAADAPz/AQAIAAQAAAADAP3/AQAIAAUAAAADAP7/AQAIAAYAAAAEAPz/AQAHAAQAAAAEAP3/AQAHAAUAAAAEAP7/AQAHAAYAAAAFAPz/AQAIAAQAAAAFAP3/AQAIAAUAAAAFAP7/AQAIAAYAAAAGAPz/AQAHAAQAAAAGAP3/AQAHAAUAAAAGAP7/AQAHAAYAAAAHAPz/AQAIAAQAAAAHAP3/AQAIAAUAAAAHAP7/AQAIAAYAAAAIAPz/AQAHAAQAAAAIAP3/AQAHAAUAAAAIAP7/AQAHAAYAAAAJAPz/AQAIAAQAAAAJAP3/AQAIAAUAAAAJAP7/AQAIAAYAAAAKAPz/AQAHAAQAAAAKAP3/AQAHAAUAAAAKAP7/AQAHAAYAAAALAPz/AQAIAAQAAAALAP3/AQAIAAUAAAALAP7/AQAIAAYAAAAMAPz/AQAHAAQAAAAMAP3/AQAHAAUAAAAMAP7/AQAHAAYAAAANAPz/AQAIAAQAAAANAP3/AQAIAAUAAAANAP7/AQAIAAYAAAAOAPz/AQAHAAQAAAAOAP3/AQAHAAUAAAAOAP7/AQAHAAYAAAAPAPz/AQAIAAQAAAAPAP3/AQAIAAUAAAAPAP7/AQAIAAYAAAAQAPz/AQAHAAQAAAAQAP3/AQAHAAUAAAAQAP7/AQAHAAYAAAARAPz/AQAIAAQAAAARAP3/AQAIAAUAAAARAP7/AQAIAAYAAAD4//z/AQAHAAQAAAD4//3/AQAHAAUAAAD4//7/AQAHAAYAAAD5//z/AQAIAAQAAAD5//3/AQAIAAUAAAD5//7/AQAIAAYAAAD2//z/AQAHAAQAAAD2//3/AQAHAAUAAAD2//7/AQAHAAYAAAD3//z/AQAIAAQAAAD3//3/AQAIAAUAAAD3//7/AQAIAAYAAAD0//z/AQAHAAQAAAD0//3/AQAHAAUAAAD0//7/AQAHAAYAAAD1//z/AQAIAAQAAAD1//3/AQAIAAUAAAD1//7/AQAIAAYAAADy//z/AQAHAAQAAADy//3/AQAHAAUAAADy//7/AQAHAAYAAADz//z/AQAIAAQAAADz//3/AQAIAAUAAADz//7/AQAIAAYAAADw//z/AQAHAAQAAADw//3/AQAHAAUAAADw//7/AQAHAAYAAADx//z/AQAIAAQAAADx//3/AQAIAAUAAADx//7/AQAIAAYAAADu//z/AQAHAAQAAADu//3/AQAHAAUAAADu//7/AQAHAAYAAADv//z/AQAIAAQAAADv//3/AQAIAAUAAADv//7/AQAIAAYAAAASAPz/AQAHAAQAAAASAP3/AQAHAAUAAAASAP7/AQAHAAYAAAATAPz/AQAIAAQAAAATAP3/AQAIAAUAAAATAP7/AQAIAAYAAAAUAPz/AQAHAAQAAAAUAP3/AQAHAAUAAAAUAP7/AQAHAAYAAAAVAPz/AQAIAAQAAAAVAP3/AQAIAAUAAAAVAP7/AQAIAAYAAAAWAPz/AQAHAAQAAAAWAP3/AQAHAAUAAAAWAP7/AQAHAAYAAAAXAPz/AQAIAAQAAAAXAP3/AQAIAAUAAAAXAP7/AQAIAAYAAAAYAPz/AQAHAAQAAAAYAP3/AQAHAAUAAAAYAP7/AQAHAAYAAAAZAPz/AQAIAAQAAAAZAP3/AQAIAAUAAAAZAP7/AQAIAAYAAAAaAPz/AQAHAAQAAAAaAP3/AQAHAAUAAAAaAP7/AQAHAAYAAAAbAPz/AQAIAAQAAAAbAP3/AQAIAAUAAAAbAP7/AQAIAAYAAAAcAPz/AQAHAAQAAAAcAP3/AQAHAAUAAAAcAP7/AQAHAAYAAAAdAPz/AQAIAAQAAAAdAP3/AQAIAAUAAAAdAP7/AQAIAAYAAAAeAPz/AQAHAAQAAAAeAP3/AQAHAAUAAAAeAP7/AQAHAAYAAAAfAPz/AQAIAAQAAAAfAP3/AQAIAAUAAAAfAP7/AQAIAAYAAAAgAPz/AQAHAAQAAAAgAP3/AQAHAAUAAAAgAP7/AQAHAAYAAAAhAPz/AQAIAAQAAAAhAP3/AQAIAAUAAAAhAP7/AQAIAAYAAAA=")
 tile_set = SubResource("TileSet_p4c0h")
@@ -248,6 +260,6 @@ position = Vector2(410, -319)
 position = Vector2(148, -19)
 dialogue_resource = SubResource("Resource_e4d2g")
 
-[node name="QuestItem" parent="." instance=ExtResource("8_tn3qu")]
-position = Vector2(-110, -43)
-item_icon = ExtResource("9_ibqqw")
+[node name="QuestItem" parent="." instance=ExtResource("9_ko1cn")]
+position = Vector2(-152, -38)
+item_icon = ExtResource("10_docn6")

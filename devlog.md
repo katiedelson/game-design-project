@@ -4,10 +4,18 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2025.11.03 - 4 hrs: continued with tutorial
+* FINISHED quest and dialogue system & UI
+* added day/night cycle!!! every minute real time is an hour in game (should I add ingame clock?)
+* to-do next: actually create the quests
+* need to update UI looks & game aesthetics
+* need to make offical map/level
+
+
 ### 2024.10.29 - 3 hrs: Continued with tutorial (during class)
 * added dialogue json file for little state machine branch system
 * finished dialpogue system with temporary UI design
-* need to add actual quests/"deliveries"
+* need to add actual quests/"deliveries" system
 * need to incoperate questUI
 
 ### 2024.10.29 - 1 hr: Started with quest & dialogue system
