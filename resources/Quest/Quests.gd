@@ -6,6 +6,7 @@ class_name Quest
 
 @export var quest_id: String
 @export var quest_name: String
+@export var quest_description: String
 @export var state: String = "not_started"
 @export var unlock_id: String
 @export var objectives: Array[Objectives] = []
@@ -25,11 +26,11 @@ func complete_objective(objective_id: String, quantity: int = 1):
 			# collection objective
 			if objective.target_type == "collection":
 				objective.collected_quantity += quantity
-				if objective.collected_quanity >= objective.required_quantity:
+				if objective.collected_quantity >= objective.required_quantity:
 					objective.is_completed = true
 			# talk to objective
 			elif objective.target_type == "talk_to":
-				objective.is_completed = false
+				objective.is_completed = true
 			break
 	
 	#if all objective complete

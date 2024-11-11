@@ -1,28 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd6cun62v8fxs"]
+[gd_scene load_steps=6 format=3 uid="uid://cd6cun62v8fxs"]
 
-[ext_resource type="Script" path="res://scripts/Quest/quest_ui.gd" id="1_f8tuy"]
+[ext_resource type="Script" path="res://scripts/Quest/QuestUI.gd" id="1_ajiif"]
+[ext_resource type="FontFile" uid="uid://dxdk18bi1xqsb" path="res://assets/FOT-Seurat Pro B.otf" id="2_ijtv0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqkm5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_176f8"]
-bg_color = Color(0.751285, 0.586141, 0.340298, 1)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 10
-border_width_bottom = 20
-border_color = Color(0.642364, 0.500216, 0.28801, 1)
+bg_color = Color(0.920157, 0.868917, 0.762805, 1)
+border_width_right = 20
+border_color = Color(0.875177, 0.82557, 0.701524, 1)
+border_blend = true
 corner_radius_top_left = 40
 corner_radius_bottom_left = 40
+expand_margin_right = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp5ya"]
-bg_color = Color(0.64, 0.50176, 0.2944, 1)
-border_width_left = 10
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.57, 0.44004, 0.2451, 1)
+bg_color = Color(0.912787, 0.857368, 0.746331, 1)
+border_width_right = 17
+border_color = Color(0.856462, 0.801587, 0.664528, 1)
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
+expand_margin_left = 2.0
 
 [node name="QuestUI" type="Control"]
 layout_mode = 3
@@ -33,7 +31,7 @@ offset_left = -2.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_f8tuy")
+script = ExtResource("1_ajiif")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -87,6 +85,9 @@ layout_mode = 2
 [node name="List" type="Label" parent="CanvasLayer/Panel/Contents/Headings"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.57, 0.44004, 0.2451, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_ijtv0")
 theme_override_font_sizes/font_size = 30
 text = "to-do today:"
 horizontal_alignment = 1
@@ -95,6 +96,8 @@ uppercase = true
 [node name="Details" type="Label" parent="CanvasLayer/Panel/Contents/Headings"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.57, 0.44004, 0.2451, 1)
+theme_override_fonts/font = ExtResource("2_ijtv0")
 theme_override_font_sizes/font_size = 30
 text = "delivery details"
 horizontal_alignment = 1
@@ -106,7 +109,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 40
 
 [node name="QuestList" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details"]
-clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
@@ -118,33 +120,48 @@ theme_override_constants/separation = 10
 
 [node name="QuestTitle" type="Label" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.57, 0.44004, 0.2451, 1)
+theme_override_fonts/font = ExtResource("2_ijtv0")
 theme_override_font_sizes/font_size = 20
 text = "title"
-horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="QuestDesc" type="Label" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.53268, 0.2967, 1)
+theme_override_fonts/font = ExtResource("2_ijtv0")
 theme_override_font_sizes/font_size = 20
 text = "description..."
+autowrap_mode = 3
 
 [node name="QuestObjectives" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+visible = false
 layout_mode = 2
 
 [node name="QuestRewards" type="VBoxContainer" parent="CanvasLayer/Panel/Contents/Details/QuestDetails"]
+visible = false
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="CanvasLayer/Panel"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -56.0
-offset_top = 21.0
-offset_right = -20.0
-offset_bottom = 57.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -51.0
+offset_right = -33.0
+offset_bottom = -15.0
 grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.913725, 0.858824, 0.745098, 1)
+theme_override_colors/font_outline_color = Color(0.57, 0.44004, 0.2451, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_ijtv0")
 theme_override_font_sizes/font_size = 20
 text = "X"
+flat = true
 
 [connection signal="pressed" from="CanvasLayer/Panel/CloseButton" to="." method="_on_close_button_pressed"]

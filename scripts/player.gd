@@ -28,7 +28,7 @@ const SLIDE_TIME = 3.0
 const SPEED = 180
 const MAX_SLIDING_SPEED = 15000
 
-# dialogue & quest vars
+# dialog & quest vars
 var selected_quest: Quest = null
 var point_amount = 0
 
@@ -185,11 +185,10 @@ func _input(event):
 			var target = interact_checker.get_collider()
 			if target != null:
 				if target.is_in_group("NPC"):
-					print("I'm talking to an NPC!")
 					can_move = false
 					target.start_dialogue()
 					check_quest_objectives(target.npc_id, "talk_to")
-				if target.is_in_group("Item"):
+				elif target.is_in_group("Item"):
 					print("I'm interacting with an item!")
 					if is_item_needed(target.item_id):
 						check_quest_objectives(target.item_id, "collection", target.item_quantity)
@@ -198,13 +197,13 @@ func _input(event):
 						print("item not needed for any active quest")
 	# open/close quest log
 		if event.is_action_pressed("ui_quest_menu"):
-			quest_manager.show_hide_log()
+			quest_manager.show_quest_log()
 
 # check if quest item is needed
 func is_item_needed(item_id: String) -> bool:
 	if selected_quest != null:
 		for objective in selected_quest.objectives:
-			if objective.target_id == item_id and objectives.target_type == "collection" and not objective.is_completed:
+			if objective.target_id == item_id and objective.target_type == "collection" and not objective.is_completed:
 				return true
 	return false
 
@@ -212,21 +211,21 @@ func check_quest_objectives(target_id: String, target_type: String, quantity: in
 	if selected_quest == null:
 		return
 	
-	#update objectives
+	# Update objectives
 	var objective_updated = false
 	for objective in selected_quest.objectives:
-		if objective.target_id == target_id and objectives.target_type == target_type and not objective.is_completed:
-			print("completing objective for quest: ", selected_quest.quest_name)
+		if objective.target_id == target_id and objective.target_type == target_type and not objective.is_completed:
+			print("Completing objective for quest: ", selected_quest.quest_name)
 			selected_quest.complete_objective(objective.id, quantity)
 			objective_updated = true
 			break
 	
-	# provide rewards
+	# Provide rewards
 	if objective_updated:
 		if selected_quest.is_completed():
 			handle_quest_completion(selected_quest)
-			
-		# update UI
+	
+		# Update UI
 		update_quest_tracker(selected_quest)
 
 # point rewards
@@ -244,15 +243,16 @@ func update_points():
 	amount.text = str(point_amount)
 
 # update tracker UI
+# Update tracker UI
 func update_quest_tracker(quest: Quest):
 	# if we have an active quest, populate tracker
 	if quest:
 		quest_tracker.visible = true
-		title.text = quest.quest_name
+		title.text = quest.quest_name	
 		
 		for child in objectives.get_children():
 			objectives.remove_child(child)
-		
+			
 		for objective in quest.objectives:
 			var label = Label.new()
 			label.text = objective.description
@@ -260,20 +260,22 @@ func update_quest_tracker(quest: Quest):
 			if objective.is_completed:
 				label.add_theme_color_override("font_color", Color(0, 1, 0))
 			else:
-				label.add_theme_color_override("font_color", Color(1, 0, 0))
-			
+				label.add_theme_color_override("font_color", Color(1,1, 1))
+				
 			objectives.add_child(label)
-	# no active quest, hide tracker
+	# no active quest, hide tracker		
 	else:
 		quest_tracker.visible = false
 
-# update tracker if quest is complete
+# Update tracker if quest is complete
 func _on_quest_updated(quest_id: String):
 	var quest = quest_manager.get_quest(quest_id)
 	if quest == selected_quest:
 		update_quest_tracker(quest)
-
-# update tracker if objective is complete
+	selected_quest = null
+	
+# Update tracker if objective is complete
 func _on_objective_updated(quest_id: String, objective_id: String):
 	if selected_quest and selected_quest.quest_id == quest_id:
 		update_quest_tracker(selected_quest)
+	selected_quest = null

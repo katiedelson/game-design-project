@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://v2xbvx7vr1rr"]
+[gd_scene load_steps=24 format=4 uid="uid://v2xbvx7vr1rr"]
 
 [ext_resource type="PackedScene" uid="uid://bsv2gqa62puxn" path="res://scenes/player.tscn" id="1_l11an"]
 [ext_resource type="Script" path="res://scripts/daynightcycle.gd" id="2_ev2cs"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c236tkg67mvri" path="res://scenes/umbrella.tscn" id="4_d8qgt"]
 [ext_resource type="PackedScene" uid="uid://b6lq5c4hs8sj4" path="res://scenes/physics_bridge.tscn" id="4_qn7r4"]
 [ext_resource type="PackedScene" uid="uid://dgbtj6soh1767" path="res://scenes/power_line.tscn" id="5_6txhu"]
-[ext_resource type="Script" path="res://resources/dialogue/dialogue.gd" id="8_2w856"]
 [ext_resource type="Texture2D" uid="uid://npqcvf1e0fdf" path="res://assets/Untitled_Artwork 8.png" id="8_a0ni6"]
 [ext_resource type="PackedScene" uid="uid://ysk4lttamc3x" path="res://scenes/npc.tscn" id="8_o6tlb"]
-[ext_resource type="PackedScene" uid="uid://dd7njqfpa76cg" path="res://scenes/quest_item.tscn" id="9_ko1cn"]
-[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="10_docn6"]
+[ext_resource type="Script" path="res://resources/Quest/Quests.gd" id="10_0lwrd"]
+[ext_resource type="Script" path="res://resources/Quest/Objectives.gd" id="11_vunhv"]
+[ext_resource type="Script" path="res://resources/Quest/Rewards.gd" id="12_6ofrm"]
+[ext_resource type="PackedScene" uid="uid://c6wc2xvbojfsj" path="res://scenes/quest_item.tscn" id="13_0ybd4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qouix"]
 texture = ExtResource("3_vac6b")
@@ -115,9 +116,79 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_qouix")
 
-[sub_resource type="Resource" id="Resource_e4d2g"]
-script = ExtResource("8_2w856")
-dialogues = {}
+[sub_resource type="Resource" id="Resource_wf767"]
+script = ExtResource("11_vunhv")
+id = "npc_talk_01"
+description = "Go talk to Wesley!"
+target_id = "npc_2"
+target_type = "talk_to"
+objective_dialogue = "Hey! Oh... Pete R asked how I'm doing? I'm okay!"
+required_quantity = 0
+collected_quantity = 0
+is_completed = false
+
+[sub_resource type="Resource" id="Resource_f2b8b"]
+script = ExtResource("11_vunhv")
+id = "npc_talk_02"
+description = "Return to Pete."
+target_id = "npc_1"
+target_type = "talk_to"
+objective_dialogue = "Awww... I miss Wesley."
+required_quantity = 0
+collected_quantity = 0
+is_completed = false
+
+[sub_resource type="Resource" id="Resource_58oku"]
+script = ExtResource("12_6ofrm")
+reward_type = "points"
+reward_amount = 1
+
+[sub_resource type="Resource" id="Resource_7gbuy"]
+script = ExtResource("10_0lwrd")
+quest_id = "npc_1_quest_01"
+quest_name = "Go check on Wesley..."
+quest_description = "Go talk to Wesley and see how he's doing."
+state = "not_started"
+unlock_id = "npc_1_1"
+objectives = Array[ExtResource("11_vunhv")]([SubResource("Resource_wf767"), SubResource("Resource_f2b8b")])
+rewards = Array[ExtResource("12_6ofrm")]([SubResource("Resource_58oku")])
+
+[sub_resource type="Resource" id="Resource_70cyy"]
+script = ExtResource("11_vunhv")
+id = "npc_talk_21"
+description = "Grab Wesley two Umbrellas."
+target_id = "item_1"
+target_type = "collection"
+objective_dialogue = ""
+required_quantity = 2
+collected_quantity = 0
+is_completed = false
+
+[sub_resource type="Resource" id="Resource_8nw7n"]
+script = ExtResource("11_vunhv")
+id = "npc_talk_22"
+description = "Return to Wesley"
+target_id = "npc_2"
+target_type = "talk_to"
+objective_dialogue = "Perfect! Thank you :-O"
+required_quantity = 0
+collected_quantity = 0
+is_completed = false
+
+[sub_resource type="Resource" id="Resource_l8n00"]
+script = ExtResource("12_6ofrm")
+reward_type = "points"
+reward_amount = 1
+
+[sub_resource type="Resource" id="Resource_dyma1"]
+script = ExtResource("10_0lwrd")
+quest_id = "npc_2_quest_1"
+quest_name = "Bring Wesley coverage!"
+quest_description = "Wesley is afraid he will burn from the harsh UV rays from the sun! Bring him 2 umbrellas to help cover his delicate skin."
+state = "not_started"
+unlock_id = "npc_2_1"
+objectives = Array[ExtResource("11_vunhv")]([SubResource("Resource_70cyy"), SubResource("Resource_8nw7n")])
+rewards = Array[ExtResource("12_6ofrm")]([SubResource("Resource_l8n00")])
 
 [node name="Game" type="Node2D"]
 
@@ -258,8 +329,22 @@ position = Vector2(410, -319)
 
 [node name="NPC" parent="NPCs" instance=ExtResource("8_o6tlb")]
 position = Vector2(148, -19)
-dialogue_resource = SubResource("Resource_e4d2g")
+npc_id = "npc_1"
+npc_name = "Pete R"
+quests = Array[ExtResource("10_0lwrd")]([SubResource("Resource_7gbuy")])
 
-[node name="QuestItem" parent="." instance=ExtResource("9_ko1cn")]
-position = Vector2(-152, -38)
-item_icon = ExtResource("10_docn6")
+[node name="NPC2" parent="NPCs" instance=ExtResource("8_o6tlb")]
+position = Vector2(291, -19)
+npc_id = "npc_2"
+npc_name = "Wesley Jr"
+quests = Array[ExtResource("10_0lwrd")]([SubResource("Resource_dyma1")])
+
+[node name="Items" type="Node" parent="."]
+
+[node name="QuestItem" parent="Items" instance=ExtResource("13_0ybd4")]
+position = Vector2(-130, -42)
+item_id = "item_1"
+
+[node name="QuestItem2" parent="Items" instance=ExtResource("13_0ybd4")]
+position = Vector2(361, -39)
+item_id = "item_1"

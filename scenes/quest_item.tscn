@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd7njqfpa76cg"]
+[gd_scene load_steps=4 format=3 uid="uid://c6wc2xvbojfsj"]
 
-[ext_resource type="Script" path="res://scenes/quest_item.gd" id="1_vjmgr"]
+[ext_resource type="Script" path="res://scripts/quest_item.gd" id="1_d4hx5"]
+[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="2_o3f11"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_buvl7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5aepu"]
+radius = 21.095
 
-[node name="QuestItem" type="Area2D"]
+[node name="QuestItem" type="StaticBody2D" node_paths=PackedStringArray("item_icon") groups=["Item"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_vjmgr")
+script = ExtResource("1_d4hx5")
+item_icon = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_buvl7")
+shape = SubResource("CircleShape2D_5aepu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o3f11")

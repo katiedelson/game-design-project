@@ -4,7 +4,20 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
-### 2025.11.03 - 4 hrs: continued with tutorial
+### 2024.11.10 - 6 hr 30 mins: Debugging & quest incorperation
+* spent HOURS reworking almost every script and tweaking the UI's to get the quest & dialogue system to work (almost deleted everything and restarted)
+* Finally works. (almost) Dialogue is working, and quests are being recieved & added to quest list and tracker
+* ran into issue where quest objectives wouldn't update.. found issue and resolved
+* need to make it so quest dialogue takes priority over general dialogue
+* need to make it so new quest has to be selected before target_id dialgoue response is given
+* want to rework colors
+
+### 2024.11.08 - 1 hr: Updated UI looks
+* changed dialogue box and quest manager UI
+* imported fonts to fit aesthetic
+* reworked colors and text ordering/fitting
+
+### 2024.11.03 - 4 hrs: continued with tutorial
 * FINISHED quest and dialogue system & UI
 * added day/night cycle!!! every minute real time is an hour in game (should I add ingame clock?)
 * to-do next: actually create the quests

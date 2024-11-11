@@ -1,41 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://ysk4lttamc3x"]
+[gd_scene load_steps=11 format=3 uid="uid://ysk4lttamc3x"]
 
 [ext_resource type="Texture2D" uid="uid://brrv37wu2xo8i" path="res://assets/Untitled_Artwork 7.png" id="1_73ynu"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_efsk5"]
-[ext_resource type="Script" path="res://resources/dialogue/dialogue.gd" id="2_7rpew"]
-[ext_resource type="Script" path="res://resources/Quest/Quests.gd" id="3_8nsvu"]
-[ext_resource type="PackedScene" uid="uid://4rcteyg1lbej" path="res://scenes/Dialogue/dialogue_manager.tscn" id="4_ikbet"]
-[ext_resource type="Script" path="res://resources/Quest/Objectives.gd" id="4_vpl4c"]
-[ext_resource type="Script" path="res://resources/Quest/Rewards.gd" id="5_oyiwg"]
-
-[sub_resource type="Resource" id="Resource_g6d6b"]
-script = ExtResource("2_7rpew")
-dialogues = {}
-
-[sub_resource type="Resource" id="Resource_qcchp"]
-script = ExtResource("4_vpl4c")
-id = ""
-description = ""
-target_id = ""
-target_type = ""
-objective_dialogue = ""
-required_quantity = 0
-collected_quantity = 0
-is_completed = false
-
-[sub_resource type="Resource" id="Resource_387vd"]
-script = ExtResource("5_oyiwg")
-reward_type = ""
-reward_amount = 1
-
-[sub_resource type="Resource" id="Resource_250tw"]
-script = ExtResource("3_8nsvu")
-quest_id = ""
-quest_name = ""
-state = "not_started"
-unlock_id = ""
-objectives = Array[ExtResource("4_vpl4c")]([SubResource("Resource_qcchp")])
-rewards = Array[ExtResource("5_oyiwg")]([SubResource("Resource_387vd")])
+[ext_resource type="PackedScene" uid="uid://4rcteyg1lbej" path="res://scenes/Dialogue/DialogueManager.tscn" id="4_ikbet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_280mm"]
 atlas = ExtResource("1_73ynu")
@@ -88,10 +55,6 @@ height = 36.0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_efsk5")
-npc_id = "npc_1"
-npc_name = "pete"
-dialogue_resource = SubResource("Resource_g6d6b")
-quests = Array[ExtResource("3_8nsvu")]([SubResource("Resource_250tw")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)

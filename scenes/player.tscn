@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_if475"]
 [ext_resource type="Texture2D" uid="uid://bgu7ual7b62fa" path="res://assets/clothed v2.png" id="1_yu4t4"]
-[ext_resource type="PackedScene" uid="uid://dwf46dh8uipxe" path="res://scenes/Quest/quest_manager.tscn" id="3_g8tnb"]
+[ext_resource type="PackedScene" uid="uid://dwf46dh8uipxe" path="res://scenes/Quest/QuestManager.tscn" id="3_g8tnb"]
 [ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="4_dohm3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d0u4"]
@@ -245,7 +245,7 @@ offset_top = 16.0
 offset_right = -18.0
 offset_bottom = 66.0
 grow_horizontal = 0
-color = Color(0.141176, 0.141176, 0.141176, 0.788235)
+color = Color(0.14, 0.14, 0.14, 0)
 
 [node name="Icon" type="TextureRect" parent="HUD/Points"]
 layout_mode = 1
@@ -278,7 +278,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 316.0
 offset_bottom = 216.0
-color = Color(0.141176, 0.141176, 0.141176, 0.788235)
+color = Color(0.14, 0.14, 0.14, 0)
 
 [node name="Details" type="VBoxContainer" parent="HUD/QuestTracker"]
 layout_mode = 1
@@ -294,7 +294,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.686275, 0.807843, 0.960784, 1)
 theme_override_font_sizes/font_size = 25
 text = "title"
-horizontal_alignment = 1
 uppercase = true
 
 [node name="Objectives" type="VBoxContainer" parent="HUD/QuestTracker/Details"]

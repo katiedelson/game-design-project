@@ -1,18 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://lyli6ncfnubg"]
+[gd_scene load_steps=4 format=3 uid="uid://lyli6ncfnubg"]
 
-[ext_resource type="Script" path="res://scripts/Dialogue/dialogue_ui.gd" id="1_u5tfe"]
+[ext_resource type="Script" path="res://scripts/Dialogue/DialogueUI.gd" id="1_mkd7l"]
+[ext_resource type="FontFile" uid="uid://dxdk18bi1xqsb" path="res://assets/FOT-Seurat Pro B.otf" id="2_i63nu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqfvr"]
-bg_color = Color(0.76, 0.58672, 0.3268, 0.847059)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+bg_color = Color(0.946969, 0.9096, 0.829402, 1)
 border_color = Color(0.69, 0.53268, 0.2967, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 shadow_color = Color(0, 0, 0, 0.113725)
 
 [node name="DialogueUI" type="Control"]
@@ -22,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u5tfe")
+script = ExtResource("1_mkd7l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -32,9 +29,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -349.0
-offset_top = -168.0
-offset_right = 351.0
+offset_left = -376.0
+offset_top = -218.0
+offset_right = 424.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -46,30 +43,35 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 15.0
-offset_right = -15.0
-offset_bottom = -15.0
+offset_left = 29.0
+offset_top = 26.0
+offset_right = -31.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
 [node name="DialogueSpeaker" type="Label" parent="CanvasLayer/Panel/DialogueBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.32, 0.27904, 0.2176, 1)
+theme_override_colors/font_color = Color(0.41405, 0.633923, 0.687013, 1)
+theme_override_fonts/font = ExtResource("2_i63nu")
 theme_override_font_sizes/font_size = 20
 text = "NPC Name"
 
 [node name="DialogueText" type="Label" parent="CanvasLayer/Panel/DialogueBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.429019, 0.377806, 0.30108, 1)
+theme_override_fonts/font = ExtResource("2_i63nu")
 theme_override_font_sizes/font_size = 23
 text = "dialogue text..."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="DialogueOptions" type="HBoxContainer" parent="CanvasLayer/Panel/DialogueBox"]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/separation = 20
 
 [node name="CloseButton" type="Button" parent="CanvasLayer/Panel"]
@@ -78,12 +80,17 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -45.0
-offset_top = 10.0
-offset_right = -9.0
-offset_bottom = 46.0
+offset_left = -62.0
+offset_top = 19.0
+offset_right = -21.0
+offset_bottom = 55.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0.946969, 0.9096, 0.829402, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0.27904, 0.2176, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_i63nu")
 theme_override_font_sizes/font_size = 20
 text = "X"
+flat = true
 
 [connection signal="pressed" from="CanvasLayer/Panel/CloseButton" to="." method="_on_close_button_pressed"]
