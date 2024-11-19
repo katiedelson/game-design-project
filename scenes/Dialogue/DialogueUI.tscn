@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lyli6ncfnubg"]
 
 [ext_resource type="Script" path="res://scripts/Dialogue/DialogueUI.gd" id="1_mkd7l"]
-[ext_resource type="FontFile" uid="uid://dxdk18bi1xqsb" path="res://assets/FOT-Seurat Pro B.otf" id="2_i63nu"]
+[ext_resource type="FontFile" uid="uid://dxdk18bi1xqsb" path="res://assets/fonts/FOT-Seurat Pro B.otf" id="2_m1csh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqfvr"]
 bg_color = Color(0.946969, 0.9096, 0.829402, 1)
@@ -54,7 +54,7 @@ theme_override_constants/separation = 15
 [node name="DialogueSpeaker" type="Label" parent="CanvasLayer/Panel/DialogueBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.41405, 0.633923, 0.687013, 1)
-theme_override_fonts/font = ExtResource("2_i63nu")
+theme_override_fonts/font = ExtResource("2_m1csh")
 theme_override_font_sizes/font_size = 20
 text = "NPC Name"
 
@@ -62,12 +62,12 @@ text = "NPC Name"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.429019, 0.377806, 0.30108, 1)
-theme_override_fonts/font = ExtResource("2_i63nu")
+theme_override_fonts/font = ExtResource("2_m1csh")
 theme_override_font_sizes/font_size = 23
 text = "dialogue text..."
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="DialogueOptions" type="HBoxContainer" parent="CanvasLayer/Panel/DialogueBox"]
 layout_mode = 2
@@ -88,7 +88,7 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(0.946969, 0.9096, 0.829402, 1)
 theme_override_colors/font_outline_color = Color(0.32, 0.27904, 0.2176, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_i63nu")
+theme_override_fonts/font = ExtResource("2_m1csh")
 theme_override_font_sizes/font_size = 20
 text = "X"
 flat = true

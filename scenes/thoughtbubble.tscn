@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://c00lr4yvh5n57"]
+
+[ext_resource type="Texture2D" uid="uid://cjg0iuct1hfw7" path="res://assets/Rocky Roads/FX/thought_bubble.png" id="1_8euf2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3hyl"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guhku"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll448"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3jt8"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f6do"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eya2n"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6e2r"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gacao"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yol0"]
+atlas = ExtResource("1_8euf2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jng73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3hyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guhku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll448")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3jt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f6do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eya2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6e2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gacao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yol0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_jng73")
+autoplay = "default"
+frame_progress = 0.926355

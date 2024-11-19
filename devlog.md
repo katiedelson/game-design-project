@@ -4,9 +4,16 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.11.18 - 8 hrs: Polishing part 1
+* decided to use from free assets, I recolored & edited (source: https://anokolisa.itch.io/sidescroller-shooter-central-city)
+* added parallax background
+* created demo (demo) map, took forever
+* updated NPC dialogue with simple quests & dialogue
+* added controller support for controls (not sure how to add for cursor/selecting buttons)
+
 ### 2024.11.10 - 6 hr 30 mins: Debugging & quest incorperation
 * spent HOURS reworking almost every script and tweaking the UI's to get the quest & dialogue system to work (almost deleted everything and restarted)
-* Finally works. (almost) Dialogue is working, and quests are being recieved & added to quest list and tracker
+* FINALLY works. (almost) Dialogue is working, and quests are being recieved & added to quest list and tracker
 * ran into issue where quest objectives wouldn't update.. found issue and resolved
 * need to make it so quest dialogue takes priority over general dialogue
 * need to make it so new quest has to be selected before target_id dialgoue response is given

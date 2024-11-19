@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6lq5c4hs8sj4"]
 
-[ext_resource type="Texture2D" uid="uid://b1mhbn2x50lg5" path="res://assets/test_tileset.png" id="1_blxsd"]
+[ext_resource type="Texture2D" uid="uid://b1mhbn2x50lg5" path="res://assets/old/test_tileset.png" id="1_blxsd"]
 
 [sub_resource type="GDScript" id="GDScript_kom1a"]
 script/source = "extends Node2D

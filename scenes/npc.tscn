@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ysk4lttamc3x"]
 
-[ext_resource type="Texture2D" uid="uid://brrv37wu2xo8i" path="res://assets/Untitled_Artwork 7.png" id="1_73ynu"]
+[ext_resource type="Texture2D" uid="uid://brrv37wu2xo8i" path="res://assets/sprites/Untitled_Artwork 7.png" id="1_73ynu"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_efsk5"]
 [ext_resource type="PackedScene" uid="uid://4rcteyg1lbej" path="res://scenes/Dialogue/DialogueManager.tscn" id="4_ikbet"]
 

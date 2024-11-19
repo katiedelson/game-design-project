@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://bsv2gqa62puxn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_if475"]
-[ext_resource type="Texture2D" uid="uid://bgu7ual7b62fa" path="res://assets/clothed v2.png" id="1_yu4t4"]
+[ext_resource type="Texture2D" uid="uid://bgu7ual7b62fa" path="res://assets/sprites/clothed v2.png" id="1_yu4t4"]
 [ext_resource type="PackedScene" uid="uid://dwf46dh8uipxe" path="res://scenes/Quest/QuestManager.tscn" id="3_g8tnb"]
-[ext_resource type="Texture2D" uid="uid://hinopyjnppi7" path="res://assets/Untitled_Artwork 3.png" id="4_dohm3"]
+[ext_resource type="Texture2D" uid="uid://f16dhpvqjwvf" path="res://assets/tileset/Untitled_Artwork 12.png" id="4_vx5ea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d0u4"]
 atlas = ExtResource("1_yu4t4")
@@ -253,7 +253,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 56.0
 grow_vertical = 2
-texture = ExtResource("4_dohm3")
+texture = ExtResource("4_vx5ea")
 expand_mode = 3
 
 [node name="Amount" type="Label" parent="HUD/Points"]

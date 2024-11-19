@@ -15,3 +15,6 @@ class_name Objectives
 @export var collected_quantity: int = 0
 # objectve state
 @export var is_completed: bool = false
+
+func is_active() -> bool:
+	return is_completed

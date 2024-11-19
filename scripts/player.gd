@@ -186,6 +186,15 @@ func _input(event):
 			if target != null:
 				if target.is_in_group("NPC"):
 					can_move = false
+					#
+					##check if the NPC has any quest related dialogue:
+					#if should_show_objective_dialogue(target.npc_id):
+						#var objective = get_active_objective(target.npc_id)
+						#if objective:
+							#target.start_dialiogue(objective.objective_dialogue)
+							#check_quest_objectives(target.npc_id, "talk_to")
+					#else:
+						##start normal dialogue
 					target.start_dialogue()
 					check_quest_objectives(target.npc_id, "talk_to")
 				elif target.is_in_group("Item"):
@@ -279,3 +288,17 @@ func _on_objective_updated(quest_id: String, objective_id: String):
 	if selected_quest and selected_quest.quest_id == quest_id:
 		update_quest_tracker(selected_quest)
 	selected_quest = null
+
+### added ###
+func should_show_objective_dialogue(npc_id: String) -> bool:
+	if selected_quest != null and selected_quest.objectives.size() > 0:
+		var first_objective = selected_quest.objectives[0]
+		return first_objective.target_id == npc_id and first_objective.target_type == "talk_to" and first_objective.is_active()
+	return false
+
+func get_active_objective(npc_id: String) -> Objectives:
+	if selected_quest != null:
+		for objective in selected_quest.objectives:
+			if objective.target_id == npc_id and objective.target_type == "talk_to" and objective.is_active():
+				return objective
+	return null

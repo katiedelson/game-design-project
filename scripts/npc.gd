@@ -55,7 +55,7 @@ func offer_quest(quest_id: String):
 			return
 	print("Quest not found or already started")
 
-# Gets quest dialogue
+#Gets quest dialogue
 func get_quest_dialogue() -> Dictionary:
 	var active_quests = quest_manager.get_active_quests()
 	for quest in active_quests:
@@ -64,3 +64,19 @@ func get_quest_dialogue() -> Dictionary:
 				if current_state == "start":
 					return {"text": objective.objective_dialogue, "options": {}}
 	return {"text": "", "options": {}}
+
+##func get_quest_dialogue() -> Dictionary:
+	##if quest_manager.selected_quest:
+		##var objectives = quest_manager.selected_quest.objectives
+		### Only show quest dialogue if this NPC's objective is first and active
+		##if objectives.size() > 0 and objectives[0].target_id == npc_id and objectives[0].target_type == "talk_to" and not objectives[0].is_completed:
+			##return {"text": objectives[0].objective_dialogue, "options": []}
+	##return {"text": "", "options": []}  # Return empty dialogue if no valid quest dialogue
+#func get_quest_dialogue() -> Dictionary:
+	#var active_quests = quest_manager.get_active_quests()
+	#for quest in active_quests:
+		#for objective in quest.objectives:
+			#if objective.target_id == npc_id and objective.target_type == "talk_to" and not objective.is_completed:
+				#if current_state == "start":
+					#return {"text": objective.objective_dialogue, "options": {}}
+	#return {"text": "", "options": {}}

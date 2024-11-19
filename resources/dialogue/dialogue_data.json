@@ -6,77 +6,37 @@
 				"dialogues": [
 					{
 						"state": "start",
-						"text": "Hello, adventurer! What do you need?",
+						"text": "Hey! What's up? You ready to start deliveries for today?",
 						"options": {
-							"Ask About Town": "in_progress",
-							"Receive Quests": "give_quests",
-							"Say Goodbye": "exit"
+							"How do I get up there?": "in_progress",
+							"I'm ready!": "give_quests",
+							"Nevermind.": "exit"
 						}
 					},
 					{
 						"state": "in_progress",
-						"text": "This town is known for its beautiful gardens and not so friendly NPC's.",
+						"text": "Where? Oh! You mean where the big arrow is pointing? Try jumping on the walls!",
 						"options": {
-							"Say Goodbye": "end",
+							"Okay, thanks!": "end",
 							"Go Back": "start"
 						}
 					},
 					{
 						"state": "give_quests",
-						"text": "Sure! If I have anything, you can find it in your Quest Log.",
+						"text": "Great! I've updated your notebook with the people you need to deliver to today. Press [Q] or (Y) to open it!",
 						"options": {
-							"Say Goodbye": "exit",
+							"Got it! Thanks.": "exit",
 							"Go Back": "start"
 						}
 					},
 					{
 						"state": "end",
-						"text": "Goodbye, adventurer!",
+						"text": "Good luck! See you around.",
 						"options": {}
 					},
 					{
 						"state": "exit",
-						"text": "Come back soon adventurer!",
-						"options": {}
-					}
-				]
-			},
-			{
-				"branch_id": "npc_1_2",
-				"dialogues": [
-					{
-						"state": "start",
-						"text": "Hey adventurer! Back so soon?",
-						"options": {
-							"Continue Asking About Town": "in_progress",
-							"Receive Quests": "give_quests",
-							"Say Goodbye": "exit"
-						}
-					},
-					{
-						"state": "in_progress",
-						"text": "I heard that Carl over there makes a mean cat-eye soup.",
-						"options": {
-							"Say Goodbye": "end",
-							"Go Back": "start"
-						}
-					},
-					{
-						"state": "give_quests",
-						"text": "Sure! If I have anything, you can find it in your Quest Log.",
-						"options": {
-							"Say Goodbye": "exit",
-							"Go Back": "start"
-						}
-					},
-					{
-						"state": "end",
-						"text": "Goodbye, adventurer!",
-						"options": {}
-					},
-					{
-						"state": "exit",
-						"text": "Come back soon!",
+						"text": "Goodbye!",
 						"options": {}
 					}
 				]
@@ -86,16 +46,17 @@
 				"dialogues": [
 					{
 						"state": "start",
-						"text": "Hey adventurer! Thanks again for helping me.",
+						"text": "Hey! Back so soon?",
 						"options": {
-							"Receive Quests": "give_quests",
-							"Say Goodbye": "exit"
+							"Anything else I should know?": "in_progress",
+							"Nevermind.": "exit"
 						}
 					},
 					{
-						"state": "give_quests",
-						"text": "Sure! If I have anything, you can find it in your Quest Log.",
+						"state": "in_progress",
+						"text": "I heard that the power lines are pretty sturdy... who knows? Maybe you can jump on them to get to higher places? (press [S] to jump down from them)",
 						"options": {
+							"Okay! Thanks!": "exit",
 							"Go Back": "start"
 						}
 					}
@@ -106,63 +67,49 @@
 	"npc_2": {
 		"trees": [
 			{
-				"branch_id": "npc_2_1",
+				"branch_id": "npc_default",
 				"dialogues": [
 					{
 						"state": "start",
-						"text": "Greetings, traveler! How can I assist you?",
+						"text": "Hey! How'd you get up here? ...",
 						"options": {
-							"Ask About Forest": "in_progress",
-							"Receive Quests": "give_quests",
-							"Say Goodbye": "exit"
+							"How do I get across here?": "in_progress",
+							"Gotta go!": "exit"
 						}
 					},
 					{
 						"state": "in_progress",
-						"text": "The forest is home to many mystical creatures.",
+						"text": "Yikes, why would you wanna do that? You'd have to be able to jump twice to reach... but if you fall down it looks like that umbrella would soften the fall...",
 						"options": {
-							"Say Goodbye": "end",
+							"...": "exit",
 							"Go Back": "start"
 						}
 					},
-					{
-						"state": "give_quests",
-						"text": "Okay. I've updated your quest log with things I need done.",
-						"options": {
-							"Say Goodbye": "exit",
-							"Go Back": "start"
-						}
-					},
-					{
-						"state": "end",
-						"text": "Farewell, traveler!",
-						"options": {}
-					},
-					{
-						"state": "exit",
-						"text": "Come back soon!",
-						"options": {}
-					}
 				]
-			},
+			}
+		]
+	},
+	"npc_3": {
+		"trees": [
 			{
-			"branch_id": "npc_default",
+				"branch_id": "npc_default",
 				"dialogues": [
 					{
 						"state": "start",
-						"text": "I wonder why Bobby is always smelling me...",
+						"text": "What's up?",
 						"options": {
-							"Receive Quests": "give_quests",
-							"Say Goodbye": "exit"
+							"Why are you naked?": "in_progress",
+							"Gotta go!": "exit"
 						}
 					},
 					{
-						"state": "give_quests",
-						"text": "Okay. I've updated your quest log with things I need done.",
+						"state": "in_progress",
+						"text": "Why aren't YOU naked?",
 						"options": {
+							"...": "exit",
 							"Go Back": "start"
 						}
-					},
+					}
 				]
 			}
 		]
