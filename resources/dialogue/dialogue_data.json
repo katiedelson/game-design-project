@@ -92,6 +92,27 @@
 	"npc_3": {
 		"trees": [
 			{
+				"branch_id": "npc_3_1",
+				"dialogues": [
+					{
+						"state": "start",
+						"text": "What's up?",
+						"options": {
+							"Need anything?": "give_quests",
+							"Gotta go!": "exit"
+						}
+					},
+					{
+						"state": "give_quests",
+						"text": "Yeah actually... I think I dropped my apple somewhere around town... I don't want to litter, can you pick it up for me?",
+						"options": {
+							"Sure?": "exit",
+							"Go Back": "start"
+						}
+					}
+				]
+			},
+			{
 				"branch_id": "npc_default",
 				"dialogues": [
 					{

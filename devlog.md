@@ -4,6 +4,11 @@
 * [Proposal](proposal.pdf)
 * [Other docs](todo)
 
+### 2024.11.09 - 1 hr: Polishing part 1.2
+* added more to the map
+* added item collection quest with NPC_3
+* had weird bugs with tileset on powerlines that I fixed
+
 ### 2024.11.18 - 8 hrs: Polishing part 1
 * decided to use from free assets, I recolored & edited (source: https://anokolisa.itch.io/sidescroller-shooter-central-city)
 * added parallax background

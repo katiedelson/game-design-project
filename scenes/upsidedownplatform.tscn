@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://brvd4kfy24biw"]
+
+[ext_resource type="Texture2D" uid="uid://clf10kkekxc83" path="res://assets/tileset/Buildings.png" id="1_hlg0s"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_hlg0s")
+region_enabled = true
+region_rect = Rect2(95.9881, 133.028, 32.0482, 5.95465)
